@@ -12,6 +12,6 @@ export const addCardNumber = (cn?: string) => {
     return 'No card';
   }
   let cn1 = '**** **** **** ';
-  let cn2 = cn?.slice(0, 9);
+  let cn2 = cn?.slice(10, cn.length);
   return cn1 + cn2;
 };
