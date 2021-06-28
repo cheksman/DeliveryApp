@@ -6,6 +6,7 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const CLEAR_CART = 'CLEAR_CART';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
+export const SAVE_CARD = 'SAVE_CARD';
 
 export interface IProduct {
   productId: string;
@@ -18,6 +19,13 @@ export interface IProduct {
   stock?: number;
   location?: string;
   categoryId: string;
+}
+
+export interface ICard {
+  cardName: string;
+  cardDate: string;
+  cardCvc: string;
+  cardNumber: string;
 }
 
 export interface ICategory {
@@ -53,6 +61,11 @@ interface IRemoveFromCart {
   payload: IProduct[];
 }
 
+interface ISaveCard {
+  type: typeof SAVE_CARD;
+  payload: ICard;
+}
+
 interface IClearCart {
   type: typeof CLEAR_CART;
 }
@@ -63,6 +76,7 @@ export type ShopActions =
   | IAddToCart
   | IAddToWishlist
   | IGetCategories
+  | ISaveCard
   | IClearCart;
 
 export type ShopState = {
@@ -70,4 +84,5 @@ export type ShopState = {
   cart?: IProduct[];
   categories?: ICategory[];
   wishlist?: IProduct[];
+  card?: null | ICard;
 };

@@ -6,3 +6,12 @@ export const PRIMARY_COLOR = '#0BCE83';
 export const SECONDARY_COLOR = '#7203FF';
 export const FADED_SECONDARY = '#E2CBFF';
 export const TEXT_COLOR = '#9586A8';
+
+export const addCardNumber = (cn?: string) => {
+  if (!cn) {
+    return 'No card';
+  }
+  let cn1 = '**** **** **** ';
+  let cn2 = cn?.slice(0, 9);
+  return cn1 + cn2;
+};

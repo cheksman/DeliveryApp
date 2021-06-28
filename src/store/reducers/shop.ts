@@ -4,6 +4,7 @@ import {
   ADD_TO_WISHLIST,
   GET_CATEGORIES,
   GET_PRODUCTS,
+  SAVE_CARD,
   ShopActions,
   ShopState,
 } from '../actions/shop/shop.d';
@@ -13,6 +14,7 @@ const InitialState = {
   cart: [],
   categories: [],
   wishlist: [],
+  card: null,
 };
 
 const shopReducer: Reducer<ShopState, ShopActions> = (
@@ -40,6 +42,11 @@ const shopReducer: Reducer<ShopState, ShopActions> = (
       return {
         ...state,
         categories: actions.payload,
+      };
+    case SAVE_CARD:
+      return {
+        ...state,
+        card: actions.payload,
       };
     default:
       return InitialState;

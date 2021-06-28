@@ -2,15 +2,18 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
+import {useSelector} from 'react-redux';
 import Header from '../components/header';
 import IconList from '../components/icon-list';
 import SubCategory from '../components/sub-category';
 import {
+  addCardNumber,
   SCREEN_HEIGHT,
   SCREEN_WIDTH,
   SECONDARY_COLOR,
   TEXT_COLOR,
 } from '../helpers/constants';
+import {IAppState} from '../store/reducers/appState';
 
 const Checkout: React.FC = () => {
   const options = [
@@ -33,6 +36,7 @@ const Checkout: React.FC = () => {
 
   const [selected, setSelected] = useState<string>('By Drone');
   const navigation = useNavigation();
+  const card = useSelector(({shopState}: IAppState) => shopState.card);
   return (
     <View style={styles.scrollContainer}>
       <Header back bgColor="#fff" title="Checkout" />
@@ -52,7 +56,11 @@ const Checkout: React.FC = () => {
             );
           }}
           list={() => {
-            return <Text style={styles.textStyles}>**** **** **** 4747</Text>;
+            return (
+              <Text style={styles.textStyles}>
+                {addCardNumber(card?.cardNumber)}
+              </Text>
+            );
           }}
         />
         <SubCategory title="Delivery address" />

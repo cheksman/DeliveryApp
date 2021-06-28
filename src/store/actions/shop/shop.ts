@@ -13,6 +13,9 @@ import {
   IProduct,
   IRemoveFromCart,
   REMOVE_FROM_CART,
+  ICard,
+  ISaveCard,
+  SAVE_CARD,
 } from './shop.d';
 
 export const getProductsByCategory =
@@ -21,30 +24,43 @@ export const getProductsByCategory =
     const result: IProduct[] = Products.filter(
       val => val.categoryId === categoryId,
     );
-    cb();
-    return dispatch({
+    const res = dispatch({
       type: GET_PRODUCTS,
       payload: result,
     });
+    cb();
+    return res;
   };
 
 export const getAllCategories =
   (cb: () => void) => (dispatch: Dispatch<IGetCategories>) => {
     const result = Category;
-    cb();
-    return dispatch({
+    const res = dispatch({
       type: GET_CATEGORIES,
       payload: result,
     });
+    cb();
+    return res;
   };
 
 export const addToCart =
   (data: IProduct[], cb: () => void) => (dispatch: Dispatch<IAddToCart>) => {
-    cb();
-    return dispatch({
+    const result = dispatch({
       type: ADD_TO_CART,
       payload: data,
     });
+    cb();
+    return result;
+  };
+
+export const saveCard =
+  (data: ICard, cb: () => void) => (dispatch: Dispatch<ISaveCard>) => {
+    const result = dispatch({
+      type: SAVE_CARD,
+      payload: data,
+    });
+    cb();
+    return result;
   };
 
 export const addToWishlist =
@@ -58,9 +74,10 @@ export const addToWishlist =
 export const removeFromCart =
   (data: IProduct[], cb: () => void) =>
   (dispatch: Dispatch<IRemoveFromCart>) => {
-    cb();
-    return dispatch({
+    const result = dispatch({
       type: REMOVE_FROM_CART,
       payload: data,
     });
+    cb();
+    return result;
   };
