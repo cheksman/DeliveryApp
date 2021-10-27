@@ -39,7 +39,7 @@ const Splash: React.FC = () => {
         </View>
         <TouchableOpacity
           style={styles.dismissContainer}
-          onPress={() => navigation.navigate('BottomTab')}>
+          onPress={() => navigation.navigate('Discover')}>
           <Text style={styles.dismiss}>DISMISS</Text>
         </TouchableOpacity>
       </View>

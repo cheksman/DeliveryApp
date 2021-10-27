@@ -6,6 +6,8 @@ import Products from '../screens/products';
 import SingleProducts from '../screens/single-product';
 import BottomTabNavigation from './bottom.tab';
 import Payment from '../screens/payment';
+import DiscoverScreen from '../screens/discover';
+import DiscoverProfile from '../screens/discover-profile';
 
 export const SplashStack: React.FC = () => {
   const Stack = createStackNavigator();
@@ -16,6 +18,8 @@ export const SplashStack: React.FC = () => {
       <Stack.Screen name="SingleProduct" component={SingleProducts} />
       <Stack.Screen name="Payment" component={Payment} />
       <Stack.Screen name="BottomTab" component={BottomTabNavigation} />
+      <Stack.Screen name="Discover" component={DiscoverScreen} />
+      <Stack.Screen name="DiscoverProfile" component={DiscoverProfile} />
     </Stack.Navigator>
   );
 };
